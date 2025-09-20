@@ -1,10 +1,10 @@
-package com.todo.todo;
+package com.tarefas.listatarefas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TodoApplicationTests {
+class ListatarefasApplicationTests {
 
 	@Test
 	void contextLoads() {
