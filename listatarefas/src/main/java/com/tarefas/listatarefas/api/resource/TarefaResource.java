@@ -27,6 +27,17 @@ public class TarefaResource {
         List<TarefaDTO> dtos = tarefas.stream().map(this::converterParaDTO).collect(Collectors.toList());
         return ResponseEntity.ok(dtos);
     }
+    
+    @GetMapping("{id}")
+    public ResponseEntity<?> buscarPorId(@PathVariable("id") Long id) {
+    	return service.buscarPorId(id).map(entity -> {
+            try {
+                return ResponseEntity.ok(entity);
+            } catch (Exception e) {
+                return ResponseEntity.badRequest().body(e.getMessage());
+            }
+        }).orElseGet(() -> new ResponseEntity<>("Tarefa não encontrada na base de dados.", HttpStatus.BAD_REQUEST));
+    }
 
     @PostMapping
     public ResponseEntity<Tarefa> salvar(@RequestBody TarefaDTO dto) {
@@ -41,6 +52,7 @@ public class TarefaResource {
             try {
                 Tarefa tarefa = converter(dto);
                 tarefa.setId(entity.getId());
+                tarefa.setDataCriacao(entity.getDataCriacao());
                 service.atualizarTarefa(tarefa);
                 return ResponseEntity.ok(tarefa);
             } catch (Exception e) {

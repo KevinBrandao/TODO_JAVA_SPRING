@@ -2,6 +2,7 @@ package com.tarefas.listatarefas.service;
 
 import com.tarefas.listatarefas.model.entity.Tarefa;
 import com.tarefas.listatarefas.model.repository.TarefaRepository;
+import com.tarefas.listatarefas.model.repository.TarefaRepositoryTest;
 import com.tarefas.listatarefas.service.impl.TarefaServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
